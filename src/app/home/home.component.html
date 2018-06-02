@@ -1,0 +1,36 @@
+ <h3 class="page-header">Add Invoice</h3>
+    <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+    
+
+      <div formArrayName="itemRows" class="row" >
+      
+        <div *ngFor="let itemrow of invoiceForm.controls.itemRows.controls; let i=index"  [formGroupName]="i">
+            <label>Product</label>
+            <input formControlName="productname" >
+          
+            <label>Quantity</label>
+            <input formControlName="quantity" >
+
+            <label>Amount</label>
+            <input formControlName="amount" >
+
+            <label>Tax %</label>
+            <input (keyup)="cal_total(invoiceForm.value)" formControlName="tax" >
+
+            <label>Total</label>
+            <input formControlName="total" >
+          <button  (click)="deleteRow(i)" >-</button>
+        </div>
+      </div>
+
+
+	<label>Discount:</label>
+    <input type="text" formControlName="discount" />
+
+<label>Grand Total:</label>
+    <input type="text" formControlName="g_total" />
+
+    <button type="button" (click)="addNewRow()" >+</button><br>
+    </form>
+    <pre>{{invoiceForm.value | json}}</pre>
+  
