@@ -1,16 +1,24 @@
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit(heroForm)">
-  <div class="form-group">
-    <label class="center-block"> Customer name:
-      <input class="form-control" formControlName="name">
+<section>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+	<fieldset>
+		<p>
+    <label> Customer name:
     </label>
-  </div>
-  <div class="form-group">
-    <label class="center-block">Email address:
-      <input class="form-control" formControlName="email">
-    </label>
-  </div>
+      <input class="input_name" formControlName="name">
 
-  <button input="submit">Submit </button>
+    </p>
+    <!--  <p style="    margin: 4px 326px 15px;    background-color: #5b9bd5;" *ngIf="loginForm.controls['name'].hasError('required') && loginForm.controls['name'].touched" class="alerts alert-danger">A customer name is required.
+              </p> -->
+    <p>
+    <label  >Email address:
+    </label>
+      <input class="input_email" formControlName="email" >
+</p>
+<p>
+  <button [disabled]="loginForm.invalid" input="submit">Submit </button>
+  </p>
+</fieldset>
 </form>
 
+</section>
 

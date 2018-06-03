@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import {Router} from '@angular/router';
+import { HomeService } from './home.service';
 
 @Component({
 	selector: 'app-home',
@@ -7,14 +9,14 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public invoiceForm: FormGroup;
+  public detailsForm: FormGroup;
 
-    constructor(private _fb: FormBuilder) { }
+    constructor(private _fb: FormBuilder,private router: Router,private homeService:HomeService) { }
 
     ngOnInit() {
 
 
-      this.invoiceForm = this._fb.group({
+      this.detailsForm = this._fb.group({
         itemRows: this._fb.array([this.initItemRows()]),
             discount: [''],
             g_total: ['']
@@ -22,11 +24,6 @@ export class HomeComponent implements OnInit {
       });
     }
 
-    /*
-    This creates a new formgroup. You can think of it as adding an empty object
-    into an array. So we are pushing an object to the formarray 'itemrows' that
-    has the property 'itemname'. 
-    */
     initItemRows() {
         return this._fb.group({
             productname: [''],
@@ -38,17 +35,19 @@ total: ['']
     }
 
     addNewRow() {
-        const control = <FormArray>this.invoiceForm.controls['itemRows'];
+        const control = <FormArray>this.detailsForm.controls['itemRows'];
         control.push(this.initItemRows());
     }
 
     deleteRow(index: number) {
-        const control = <FormArray>this.invoiceForm.controls['itemRows'];
+        const control = <FormArray>this.detailsForm.controls['itemRows'];
         control.removeAt(index);
     }
-       cal_total(value){
-       	console.log(value);
-       }
+     onSubmit(form){
+this.homeService.bill_details(form);
+  this.router.navigate(['bill']);
+
+     }
 
 }
 	

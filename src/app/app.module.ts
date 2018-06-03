@@ -6,12 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule , ReactiveFormsModule  }   from '@angular/forms';
 import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './home/home.component';
+import { HomeService } from './home/home.service';
+import { BillComponent } from './bill/bill.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    BillComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

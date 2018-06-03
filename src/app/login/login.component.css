@@ -1,0 +1,35 @@
+section{
+	background-color: #5b9bd5;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.input_name{
+	margin-left: 40px;
+    height: 48px;
+    width: 230px;
+        border-color: #d9f158;
+}
+.input_email{
+	margin-left: 50px;
+    height: 48px;
+    width: 230px;
+        border-color: #d9f158;
+}
+
+button{
+	    border-width: 1px;
+    width: 107px;
+    height: 38px;
+    border-color: black;
+}
+
+p {
+    margin: 1px 0 15px;
+}
+
+form{
+    text-align:center;
+    margin-top: 210px;
+}
